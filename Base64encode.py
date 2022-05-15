@@ -24,3 +24,12 @@ class Base64(object):
 
         outstring = outstring[:-override] + "="*override
         return outstring
+
+    def decode(self, data):
+        override = data.count("=")
+        data = data.replace("=", "A")
+
+        binstring = ""
+        for char in data:
+            binstring += "{:0>6b}".format(self.CHARS.index(char))
+            
