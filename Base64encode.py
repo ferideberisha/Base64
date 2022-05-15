@@ -32,4 +32,8 @@ class Base64(object):
         binstring = ""
         for char in data:
             binstring += "{:0>6b}".format(self.CHARS.index(char))
+        
+        eightchunks = self.chunk(binstring, 8)
+
+        outbytes = b""
             
