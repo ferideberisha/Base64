@@ -36,4 +36,14 @@ class Base64(object):
         eightchunks = self.chunk(binstring, 8)
 
         outbytes = b""
+        for chunk in eightchunks:
+            outbytes += bytes([int(chunk, 2)])
+
+        return outbytes[:-override]
+
+
+if __name__ == "__main__":
+    b64 = Base64()
+    print(b64.encode(b"Hello"))
+    print(b64.decode(b64.encode(b"Hello")))
             
